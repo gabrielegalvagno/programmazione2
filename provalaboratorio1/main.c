@@ -23,5 +23,37 @@ int main(int argc, char *argv[])
     printf("======B Contenuto della Coda Q (finale) ======\n");
     printqueue(&q);
 
+    char R[100][51];
+    char buffer[51];
+    int ac = 0;
+    while (q.head != NULL)
+    {
+        dequeue(&q, buffer);
+        strcpy(R[ac], buffer);
+        ac++;
+    }
+    for (int i = 0; i < ac - 1; i++)
+    {
+        for (int j = 0; j < ac - i - 1; j++)
+        {
+
+            if (strcmp(R[j], R[j + 1]) > 0)
+            {
+
+                char temp[51];
+                strcpy(temp, R[j]);
+                strcpy(R[j], R[j + 1]);
+                strcpy(R[j + 1], temp);
+            }
+        }
+    }
+    printf("======ARRAY ORDINATO PER NOME ======\n");
+    int i = 0;
+    while (i < ac)
+    {
+        printf("%s \n", R[i]);
+        i++;
+    }
+
     return 0;
 }
