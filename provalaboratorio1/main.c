@@ -55,5 +55,23 @@ int main(int argc, char *argv[])
         i++;
     }
 
+    // REVIEW - CONTINUARE IL CODICE CON LA PARTE DI INSERIMENTO AL FILE (fprintf(params.inputfilename, "%s\n", R[i]))
+
+    FILE *fout = fopen(params.output_filename, "w");
+
+    if (fout == NULL)
+    {
+        fprintf(stderr, "IMPOSSIBILE APRIRE IL FILE: %s \n", params.output_filename);
+        exit(1);
+    }
+
+    for (int i = 0; i < ac; i++)
+    {
+        fprintf(fout, "%s\n", R[i]);
+    }
+
+    fclose(fout);
+    printf("======OPERAZIONE COMPLETATA ====== Il file di output si chiama %s \n", params.output_filename);
+
     return 0;
 }
