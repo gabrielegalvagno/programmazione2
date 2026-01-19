@@ -1,0 +1,4 @@
+casa
+albero
+prova
+legno
