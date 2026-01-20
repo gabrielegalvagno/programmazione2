@@ -1,0 +1,4 @@
+--- SYSTEM LOG ---
+[ID: 10] [ERROR] message: SYSTEM_FAULT 
+[ID: 104] [WARNING] message: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... 
+[ID: 100] [PROVA] message: system_crash 

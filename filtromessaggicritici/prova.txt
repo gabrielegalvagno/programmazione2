@@ -1,0 +1,3 @@
+10 ERROR system_fault
+104 WARNING aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+100 PROVA system_crash
