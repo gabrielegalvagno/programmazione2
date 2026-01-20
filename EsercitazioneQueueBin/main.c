@@ -6,7 +6,12 @@
 
 int main(int argc, char *argv[])
 {
-    decodeParameters(argc, argv);
+    queue q;
+    initqueue(&q);
+    params p = decodeParameters(argc, argv);
+    buildList(&q, argv[1]);
+    printf("fatto\n");
+    printqueue(&q);
 
     return 0;
 }

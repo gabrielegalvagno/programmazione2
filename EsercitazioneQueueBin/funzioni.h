@@ -47,9 +47,58 @@ void insertRecord(queue *q, char codiceEvento[31], char nomeLuogo[31], int capie
         fprintf(stderr, "malloc not work \n");
         exit(1);
     }
+    newnodo->capienzamax = capienzamax;
+    strcpy(newnodo->codiceEvento, codiceEvento);
+    strcpy(newnodo->nomeLuogo, nomeLuogo);
+    newnodo->next = NULL;
+
+    if (q->head == NULL)
+    {
+        q->head = newnodo;
+        q->tail = newnodo;
+    }
+    else
+    {
+        q->tail->next = newnodo;
+        q->tail = newnodo;
+    }
 }
 
-void decodeParameters(int argc, char *argv[])
+void buildList(queue *q, char *nomefile)
+{
+    FILE *fp = fopen(nomefile, "rb");
+    if (fp == NULL)
+    {
+        printf("File Not Finded\n");
+        exit(1);
+    }
+    char codiceEvento[31];
+    char nomeLuogo[31];
+    int capienzamax;
+    while (fscanf(fp, "%30s %30s %d", codiceEvento, nomeLuogo, &capienzamax) == 3)
+    {
+        insertRecord(q, codiceEvento, nomeLuogo, capienzamax);
+    }
+    fclose(fp);
+}
+
+void printqueue(queue *q)
+{
+    nodo *curr = q->head;
+
+    if (curr == NULL)
+    {
+        fprintf(stderr, "empty queue.\n");
+        exit(1);
+    }
+    while (curr != NULL)
+    {
+        printf("[%s] [%s] %d\n", curr->codiceEvento, curr->nomeLuogo, curr->capienzamax);
+        curr = curr->next;
+    }
+}
+
+params decodeParameters(int argc, char *argv[])
 {
     params p;
 
@@ -81,4 +130,5 @@ void decodeParameters(int argc, char *argv[])
     }
 
     printf("Success params decode the number is %d\n", p.k);
+    return p;
 }
